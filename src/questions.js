@@ -12,10 +12,10 @@ const questions = [
   {
     text: "React.js is written in which of the following language?",
     options: [
-      { id: 0, text: "JavaScript", isCorrect: "fill a boolean value here like shown in the first question" },
-      { id: 1, text: "Java", isCorrect:  "fill a boolean value here like shown in the first question" },
-      { id: 2, text: "C", isCorrect:  "fill a boolean value here like shown in the first question" },
-      { id: 3, text: "C++", isCorrect:  "fill a boolean value here like shown in the first question" },
+      { id: 0, text: "JavaScript", isCorrect: true },
+      { id: 1, text: "Java", isCorrect:  false },
+      { id: 2, text: "C", isCorrect:  false },
+      { id: 3, text: "C++", isCorrect:  false },
     ],
   },
   {
