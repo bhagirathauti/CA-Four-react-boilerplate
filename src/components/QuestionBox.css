@@ -1,5 +1,6 @@
 body{
     background-color: #85b7c2;
+    overflow-y: hidden;
 }
 .navbar{
     display: flex;
@@ -13,10 +14,20 @@ body{
     font-weight: bolder;
 }
 .navbar button{
-    height: 50px;
-    width: 120px;
+    height: 30px;
+    width: 50px;
     font-size: 1.5rem;
-    border-radius: 20px;
+}
+.navbar button:hover{
+    background-color: aqua;
+}
+.light{
+    border-top-left-radius:10px ;
+    border-bottom-left-radius:10px ;
+}
+.dark{
+    border-top-right-radius:10px ;
+    border-bottom-right-radius:10px ;
 }
 .QuestionsBox{
     display: flex;
@@ -31,25 +42,53 @@ body{
     top: 50%;
     left: 23%;
 }
+.question{
+    color: black;
+    margin: 15px 40px ;
+}
+.question.highlighted{
+    color: red;
+    margin: 15px 40px ;
+}
 .QuestionsBox h6{
     margin: 10px;
-}
-.QuestionsBox h2{
-    margin: 8px 40px;
 }
 .QuestionsBox .options{
     display: flex;
     flex-direction: column;
 }
-.QuestionsBox .options button{
+.optBtn{
     margin: 10px;
     width: 500px;
-    height: 30px;
+    height: 40px;
     text-align: left;
     border-radius: 8px;
     background-color: #f6f6f6;
     box-shadow:1px 2px black;
+    color: #85b7c2;
+    font-weight: 800;
 }
-button{
-    margin: 10px;
+.highlightBtns button{
+    border-radius: 7px;
+    height: 30px;
+    width: 180px;
+    margin: 20px;
+    background-color: #f6f6f6;
+    border: 2px solid #f6f6f6;
+    box-shadow: 2px 2px #cfede8;
+}
+.quiz-app{
+    padding: 0px 0px 100px 0px;
+}
+
+/* DARK MODE */
+.quiz-app.darken{
+    background-color: black;
+}
+.QuestionsBox.darken{
+    background-color: #dfeff0;
+}
+.optBtn.darken{
+    background: black;
+    color: white;
 }
