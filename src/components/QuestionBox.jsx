@@ -1,16 +1,19 @@
+// importing required data
 import React, { useState,useEffect} from 'react'
 import questions from '../questions'
 import "./QuestionBox.css"
 import Result from './Result'
-import { MdLightMode } from "react-icons/md";
-import { MdDarkMode } from "react-icons/md";
 
 export default function QuestionBox() {
+  // Using use state hooks
   const [currIndex,setCurrIndex] = useState(0)
   const [currScore,setCurrScore] = useState(0)
   const [highLighted, setHighlighted] = useState(false);
   const [currentMode,setCurrentMode] = useState(false);
+  const [currText,setCurrText] = useState("Dark Mode")
   const currQuestion = questions[currIndex];
+
+  // Creating functions for buttons and handling state
   const buttonClick = (selectedOption) => {
     if (selectedOption.isCorrect) {
       setCurrScore((lastScore) => lastScore + 20);
@@ -30,21 +33,26 @@ export default function QuestionBox() {
     setCurrScore(0);
   };
   const darkMode = () =>{
-    setCurrentMode(true)
-  }
-  const lightMode = () => {
-    setCurrentMode(false)
+    if(currentMode==false){
+      setCurrentMode(true)
+      setCurrText("Light Mode")
+    }
+    else{
+      setCurrentMode(false)
+      setCurrText("Dark Mode")
+    }
   }
   return(
     <div className={`quiz-app ${currentMode ? 'darken' : ''}`}>
     <div>
+      {/* Navbar */}
       <div className={`navbar ${currentMode ? 'darken' : ''}`}>
         <h1>Kalvium</h1>
         <div className="lightNdark">
-        <button className='light' onClick={lightMode}><MdLightMode /></button>
-        <button className='dark' onClick={darkMode}> <MdDarkMode/> </button>
+        <button className='dark' onClick={darkMode}>{currText} </button>
         </div>
     </div>
+    {/* Questions and Options */ }
       {
         currQuestion ? (
           <div className={`QuestionsBox ${currentMode ? 'darken' : ''}`}>
@@ -57,15 +65,17 @@ export default function QuestionBox() {
            </button>
           ))}
           </div>
+          {/* Highlight Buttons */}
           <div className="highlightBtns">
             <button onClick={highlightText}>HIGHLIGHT</button>
             <button onClick={removeHighlight}>REMOVE HIGHLIGHT</button>
           </div>
           </div>
         ):(
+          // Calling Result Component
           <>
           <div className={`resultPage ${currentMode ? 'darken' : ''}`}>
-        <p><Result score={currScore} onRestart={handleRestart}/></p>
+        <Result score={currScore} onRestart={handleRestart}/>
         </div>
         </>)
       }
